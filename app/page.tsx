@@ -1,10 +1,11 @@
 "use client";
-import { Paper, Text } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import get from "./utils/fetch";
+import Card from "./Component/Card/page";
+import { Box } from "@mantine/core";
 
 const Page = () => {
-  const [user, setUser] = useState<{}>();
+  const [user, setUser] = useState<any>();
 
   const getUserDetail = async () => {
     const data = await get("https://jsonplaceholder.typicode.com/users ");
@@ -18,7 +19,15 @@ const Page = () => {
   if (!user) {
     return <p>loading.</p>;
   }
-  return <Paper shadow="xs" radius="md" p="xl"></Paper>;
+  console.log(user[0]);
+
+  return (
+    <Box>
+      {user.map((item: any) => (
+        <Card key={item.id} {...item} />
+      ))}
+    </Box>
+  );
 };
 
 export default Page;
