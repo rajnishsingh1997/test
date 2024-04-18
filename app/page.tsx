@@ -2,10 +2,18 @@
 import React, { useEffect, useState } from "react";
 import get from "./utils/fetch";
 import Card from "./Component/Card/page";
-import { Box } from "@mantine/core";
+import { Box, Container, Grid } from "@mantine/core";
 
 const Page = () => {
-  const [user, setUser] = useState<any>();
+  interface User {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    website: string;
+  }
+
+  const [user, setUser] = useState<User[]>([]);
 
   const getUserDetail = async () => {
     const data = await get("https://jsonplaceholder.typicode.com/users ");
@@ -19,14 +27,19 @@ const Page = () => {
   if (!user) {
     return <p>loading.</p>;
   }
-  console.log(user[0]);
-
+  const handleDelete = (id: number) => {
+    setUser((user) => user.filter((user) => user.id !== id));
+  };
   return (
-    <Box>
-      {user.map((item: any) => (
-        <Card key={item.id} {...item} />
-      ))}
-    </Box>
+    <Container fluid>
+      <Grid gutter="xs" m={"lg"}>
+        {user.map((item: any) => (
+          <Grid.Col key={item.id} span={4}>
+            <Card {...item} />
+          </Grid.Col>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
