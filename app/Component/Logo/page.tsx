@@ -2,7 +2,10 @@
 import { Image } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 
-const UserImage = ({ name }) => {
+interface UserImage {
+  name: string;
+}
+const UserImage: React.FC<UserImage> = ({ name }) => {
   const [logo, setLogo] = useState("");
 
   const getUserLogo = async (name: string) => {

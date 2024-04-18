@@ -12,10 +12,6 @@ interface CardProps {
   onDelete: (id: number) => void;
 }
 
-interface UserImage {
-  name: string;
-}
-
 const Card: React.FC<CardProps> = ({
   //  this means that this is a functional component that takes card prop , take screenshot for later
 

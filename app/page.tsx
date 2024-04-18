@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import get from "./utils/fetch";
 import Card from "./Component/Card/page";
 import { Box, Container, Grid } from "@mantine/core";
+import USER_API from "../app/utils/api";
 
 const Page = () => {
   interface User {
@@ -16,7 +17,7 @@ const Page = () => {
   const [user, setUser] = useState<User[]>([]);
 
   const getUserDetail = async () => {
-    const data = await get("https://jsonplaceholder.typicode.com/users ");
+    const data = await get(USER_API);
     setUser(data);
   };
 
