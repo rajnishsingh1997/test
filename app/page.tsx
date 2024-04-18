@@ -35,7 +35,7 @@ const Page = () => {
     <Container fluid>
       <Grid gutter="xs" m={"lg"}>
         {user.map((item: any) => (
-          <Grid.Col key={item.id} span={4}>
+          <Grid.Col key={item.id} span={3}>
             <Card {...item} onDelete={handleDelete} />
           </Grid.Col>
         ))}

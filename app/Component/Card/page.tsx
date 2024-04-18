@@ -1,3 +1,4 @@
+"use client";
 import { Anchor, Button, Flex, Paper, Text } from "@mantine/core";
 import { IconTrash, IconUserMinus, IconUserPlus } from "@tabler/icons-react";
 import UserImage from "../Logo/page";
