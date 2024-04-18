@@ -9,15 +9,24 @@ interface CardProps {
   email: string;
   phone: string;
   website: string;
+  onDelete: (id: number) => void;
 }
 
 interface UserImage {
   name: string;
 }
 
-const Card: React.FC<CardProps> = ({ id, name, email, phone, website }) => {
-  const [followUser, setFollowUser] = useState(false);
+const Card: React.FC<CardProps> = ({
+  //  this means that this is a functional component that takes card prop , take screenshot for later
 
+  id,
+  name,
+  email,
+  phone,
+  website,
+  onDelete,
+}) => {
+  const [followUser, setFollowUser] = useState(false);
   const handleFollowUser = (id: number) => {
     console.log(id);
     setFollowUser(!followUser);
@@ -155,6 +164,7 @@ const Card: React.FC<CardProps> = ({ id, name, email, phone, website }) => {
             ml="5px"
             variant="outline"
             leftSection={<IconTrash size={18} />}
+            onClick={() => onDelete(id)}
           >
             Delete
           </Button>
